@@ -1,0 +1,163 @@
+ul {
+  margin: 0;
+}
+
+/* positioning */
+.pos-rel {
+  position: relative;
+}
+
+/* Links */
+.btn .link:hover {
+  border: none;
+}
+.link-none:hover {
+  border: none;
+}
+.link-white {
+  color: var(--text-white);
+  border: 1px solid transparent;
+}
+
+/* flex */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-space-bet {
+  justify-content: space-between;
+}
+
+.justify-content-start {
+  justify-content: flex-start;
+}
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+.gap-2 {
+  gap: 2rem;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+}
+.grid-col-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid-col-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid-col-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.grid-col-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* text-styling */
+.bg-primary {
+  background-color: var(--primary-light);
+}
+.bg-transparent {
+  background: transparent;
+}
+.text-primary {
+  color: var(--primary-light);
+}
+
+.text-white {
+  color: var(--text-white);
+}
+
+.text-light {
+  color: var(--text-light);
+}
+
+.text-dark {
+  color: var(--text-dark);
+}
+
+.text-black {
+  color: var(--text-black);
+}
+
+.text-gray {
+  color: var(--gray-dark);
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+.text-xs {
+  font-size: 12px;
+}
+.text-s {
+  font-size: 20px;
+}
+
+/* Buttons */
+.btn {
+  cursor: pointer;
+}
+
+.btn:disabled {
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+  border: 1px solid transparent;
+}
+
+.btn:disabled:hover {
+  box-shadow: none;
+  background-color: var(--gray-light);
+  cursor: default;
+}
+.btn-round {
+  border-radius: 10rem;
+}
+
+/* Other */
+.card-shadow {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.pointer {
+  cursor: pointer;
+}
+.main-container {
+  display: grid;
+  grid-template-columns: 5% 95%;
+}
+.border-transparent {
+  border: 1px solid transparent;
+}

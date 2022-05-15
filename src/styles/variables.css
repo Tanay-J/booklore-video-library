@@ -1,0 +1,23 @@
+:root {
+  /* light mode colors */
+  --primary-light: #f59e04;
+  --background: #f1f0f0;
+  --background-shade: #d4f1de;
+  --text-white: white;
+  --text-light: white;
+  --text-black: black;
+  --text-dark: #143109;
+  --gray-light: #c5c5c5;
+  --gray: gray;
+}
+.dark-mode {
+  --primary-light: #f59e04;
+  --background: #2c2c2c;
+  --background-shade: #686767;
+  --text-white: white;
+  --text-light: #2c2c2c;
+  --text-black: black;
+  --text-dark: white;
+  --gray-light: gray;
+  --gray: #c5c5c5;
+}
