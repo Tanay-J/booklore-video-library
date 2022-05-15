@@ -1,0 +1,56 @@
+.card_container {
+  display: grid;
+  grid-template-columns: 3rem 6rem auto auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "image image image image"
+    "avatar details details options";
+  height: 18rem;
+  width: 18rem;
+}
+.play_btn {
+  display: none;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  cursor: pointer;
+}
+.thumbnail_container {
+  grid-area: image;
+}
+.thumbnail_container:hover .play_btn {
+  display: block;
+}
+.thumbnail {
+  transition: 0.3s ease-in-out;
+  height: 12rem;
+  width: 100%;
+}
+.thumbnail:hover {
+  filter: opacity(0.6);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+.avatar {
+  grid-area: avatar;
+}
+.video_details {
+  grid-area: details;
+}
+.options_btn {
+  grid-area: options;
+  position: absolute;
+  bottom: 5%;
+}
+ul {
+  list-style-type: none;
+  padding: 4px;
+}
+.options {
+  position: absolute;
+  right: 5%;
+  bottom: 0px;
+  background-color: rgba(66, 65, 65, 0.9);
+  color: var(--text-white);
+  z-index: 1;
+}
