@@ -16,7 +16,7 @@ const Explore = () => {
           <CategoryChips setCategory={setCategory} />
           <article className={`${styles.videolist_container}`}>
             {videoList.map((video) => (
-              <VideoCard video={video} />
+              <VideoCard video={video} key={video._id} />
             ))}
           </article>
         </div>

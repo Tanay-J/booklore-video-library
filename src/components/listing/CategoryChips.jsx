@@ -28,6 +28,7 @@ const CategoryChips = ({ setCategory }) => {
             setCategory(cat.categoryName);
             setIsActive(cat);
           }}
+          key={cat._id}
         >
           {cat.categoryName}
         </button>
