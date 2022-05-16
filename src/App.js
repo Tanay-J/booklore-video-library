@@ -1,5 +1,5 @@
 import "./App.css";
-import { PrivateRoutes, PublicRoutes } from "./utils/routes";
+import { PrivateRoutes, PublicRoutes } from "utils/routes";
 
 function App() {
   return (

@@ -1,5 +1,5 @@
-import { Banner, Featured } from "../../components/homepage";
-import { Navbar } from "../../components/navigation";
+import { Banner, Featured } from "components/homepage";
+import { Navbar } from "components/navigation";
 
 const Homepage = () => {
   return (

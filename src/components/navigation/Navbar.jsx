@@ -1,8 +1,8 @@
-import { BsMoonFill, BsPlayCircleFill, BsSun } from "react-icons/bs";
 import { useEffect } from "react";
-import styles from "./navigation.module.css";
 import { Link } from "react-router-dom";
-import { useLocalStorage } from "../../utils/hooks/useLocalStorage";
+import { BsMoonFill, BsPlayCircleFill, BsSun } from "react-icons/bs";
+import { useLocalStorage } from "utils/hooks/useLocalStorage";
+import styles from "./navigation.module.css";
 
 const Navbar = () => {
   const [darkMode, setDarkMode] = useLocalStorage("darkMode", false);

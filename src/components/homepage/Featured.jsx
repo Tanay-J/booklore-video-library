@@ -1,5 +1,5 @@
-import { getVideos } from "../../utils/service-requests/video-services";
-import { VideoCard } from "../listing";
+import { getVideos } from "utils/service-requests/video-services";
+import { VideoCard } from "components/listing";
 import styles from "./homepage.module.css";
 
 const Featured = () => {

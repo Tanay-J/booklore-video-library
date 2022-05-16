@@ -1,7 +1,7 @@
-import styles from "./listing.module.css";
-import { BsFillPlayCircleFill, BsThreeDotsVertical } from "react-icons/bs";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { BsFillPlayCircleFill, BsThreeDotsVertical } from "react-icons/bs";
+import styles from "./listing.module.css";
 
 const VideoCard = ({ video }) => {
   const [showOptions, setShowOptions] = useState(false);
