@@ -1,0 +1,27 @@
+.nav_header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--text-light);
+  border-radius: 0;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  color: var(--text-dark);
+  padding: 0px 10px;
+  gap: 1rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  letter-spacing: 10px;
+}
+.logo_icon {
+  font-size: 1.5rem;
+  color: var(--primary-light);
+}
+.text_thin {
+  font-weight: 100;
+}
+.icon {
+  color: var(--text-dark);
+  transition: 0.2s ease-in-out;
+}
