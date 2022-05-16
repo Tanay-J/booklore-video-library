@@ -7,7 +7,8 @@
   --text-light: white;
   --text-black: black;
   --text-dark: #143109;
-  --gray-light: #c5c5c5;
+  --gray-light: #d0cece;
+  --gray-dark: #555555;
   --gray: gray;
 }
 .dark-mode {
@@ -18,6 +19,7 @@
   --text-light: #2c2c2c;
   --text-black: black;
   --text-dark: white;
-  --gray-light: gray;
-  --gray: #c5c5c5;
+  --gray-light: #555555;
+  --gray-dark: #d0cece;
+  --gray: gray;
 }

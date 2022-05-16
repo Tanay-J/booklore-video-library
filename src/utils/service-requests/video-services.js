@@ -23,4 +23,22 @@ const getVideos = (category) => {
 
   return { videoList };
 };
-export { getVideos };
+
+const getCategories = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(async () => {
+    try {
+      const {
+        data: { categories },
+      } = await axios.get("/api/categories");
+      setCategories(categories);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  return { categories };
+};
+
+export { getVideos, getCategories };
