@@ -8,7 +8,11 @@ const VideoCard = ({ video }) => {
   return (
     <article className={`${styles.card_container} pos-rel mx-s`}>
       <div className={`${styles.thumbnail_container}  br-s pos-rel`}>
-        <Link to={`/video/${video._id}`} className="link-none text-black">
+        <Link
+          to={`/video/${video._id}`}
+          state={{ currentVideo: video }}
+          className="link-none text-black"
+        >
           <img className={`${styles.thumbnail} br-s`} src={video.thumbnail} />
           <BsFillPlayCircleFill size="35px" className={`${styles.play_btn}`} />
         </Link>
