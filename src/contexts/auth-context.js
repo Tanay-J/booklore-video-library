@@ -6,11 +6,9 @@ const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   const [token] = useLocalStorage("token", "");
-  const [userData] = useLocalStorage("userData", "");
 
   let initialData = {
     isAuthenticated: token ? true : false,
-    userData: userData,
     token: token,
   };
 

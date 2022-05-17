@@ -4,7 +4,6 @@ const loginHandler = async (
   loginData,
   setAuthState,
   setToken,
-  setUserData,
   setErrorMsg,
   location,
   navigate,
@@ -14,13 +13,10 @@ const loginHandler = async (
 
   try {
     const { status, data } = await axios.post("/api/auth/login", loginData);
-
     if (status === 200) {
-      setToken("token", data.encodedToken);
-      setUserData("userData", data.user);
+      setToken(data.encodedToken);
       setAuthState({
         isAuthenticated: true,
-        userData: data.user,
         token: data.encodedToken,
       });
 

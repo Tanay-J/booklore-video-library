@@ -13,7 +13,6 @@ const Login = () => {
   } = useAuth();
 
   const [token, setToken] = useLocalStorage("token", "");
-  const [userData, setUserData] = useLocalStorage("userData", "");
 
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState("");
@@ -104,7 +103,6 @@ const Login = () => {
                         loginData,
                         setAuthState,
                         setToken,
-                        setUserData,
                         setErrorMsg,
                         location,
                         navigate,
