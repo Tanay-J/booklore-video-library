@@ -14,7 +14,7 @@ const Navbar = () => {
 
   const logoutHandler = () => {
     setAuthState({ isAuthenticated: false, userData: "", token: "" });
-    localStorage.clear();
+    localStorage.removeItem("token");
   };
 
   useEffect(() => {

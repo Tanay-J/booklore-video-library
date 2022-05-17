@@ -21,11 +21,11 @@ const loginHandler = async (
       });
 
       navigate(location?.state?.from?.pathname || "/");
-    } else if (status === 201) {
-      setErrorMsg("The credentials you entered are invalid");
     }
   } catch (error) {
-    console.log(error);
+    if (error.response.status === 401) {
+      setErrorMsg("The credentials you entered are invalid");
+    } else console.log(error);
   }
 };
 
