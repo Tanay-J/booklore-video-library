@@ -1,7 +1,9 @@
 import axios from "axios";
+import { getWatchlater } from "./watchlater-services";
 
 const loginHandler = async (
   loginData,
+  dataDispatch,
   setAuthState,
   setToken,
   setErrorMsg,
@@ -19,7 +21,7 @@ const loginHandler = async (
         isAuthenticated: true,
         token: data.encodedToken,
       });
-
+      getWatchlater(dataDispatch);
       navigate(location?.state?.from?.pathname || "/");
     }
   } catch (error) {

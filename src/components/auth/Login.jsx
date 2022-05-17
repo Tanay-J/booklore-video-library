@@ -5,12 +5,14 @@ import { useAuth } from "contexts/auth-context";
 import { loginHandler } from "utils/service-requests/auth-services";
 import { useLocalStorage } from "utils/hooks/useLocalStorage";
 import styles from "./auth.module.css";
+import { useData } from "contexts/data-context";
 
 const Login = () => {
   const {
     authState: { isAuthenticated },
     setAuthState,
   } = useAuth();
+  const { dataDispatch } = useData();
 
   const [token, setToken] = useLocalStorage("token", "");
 
@@ -101,6 +103,7 @@ const Login = () => {
                     onClick={(event) => {
                       loginHandler(
                         loginData,
+                        dataDispatch,
                         setAuthState,
                         setToken,
                         setErrorMsg,

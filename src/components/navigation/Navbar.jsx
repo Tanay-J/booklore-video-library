@@ -4,17 +4,20 @@ import { BsMoonFill, BsPlayCircleFill, BsSun } from "react-icons/bs";
 import { useLocalStorage } from "utils/hooks/useLocalStorage";
 import styles from "./navigation.module.css";
 import { useAuth } from "contexts/auth-context";
+import { useData } from "contexts/data-context";
 
 const Navbar = () => {
   const {
     authState: { isAuthenticated },
     setAuthState,
   } = useAuth();
+  const { dataDispatch } = useData();
   const [darkMode, setDarkMode] = useLocalStorage("darkMode", false);
 
   const logoutHandler = () => {
-    setAuthState({ isAuthenticated: false, userData: "", token: "" });
     localStorage.removeItem("token");
+    setAuthState({ isAuthenticated: false, userData: "", token: "" });
+    dataDispatch({ type: "CLEAR_ALL" });
   };
 
   useEffect(() => {
@@ -46,6 +49,15 @@ const Navbar = () => {
               </button>
             )}
           </li>
+          {!isAuthenticated && (
+            <li className="mx-s">
+              <Link to="/signup">
+                <button className="btn btn-outline outline-primary">
+                  Sign Up
+                </button>
+              </Link>
+            </li>
+          )}
           <li className="mx-s">
             {!darkMode ? (
               <BsMoonFill

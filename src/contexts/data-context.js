@@ -8,12 +8,10 @@ const DataProvider = ({ children }) => {
 
   const dataReducer = (state, action) => {
     switch (action.type) {
-      case "GET_WATCHLATER":
+      case "SET_WATCHLATER":
         return { ...state, watchlater: action.payload };
-      case "ADD_TO_WATCHLATER":
-        return { ...state, watchlater: action.payload };
-      case "REMOVE_FROM_WATCHLATER":
-        return { ...state, watchlater: action.payload };
+      case "CLEAR_ALL":
+        return initialState;
       default:
         return state;
     }

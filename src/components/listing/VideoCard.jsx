@@ -1,10 +1,25 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsFillPlayCircleFill, BsThreeDotsVertical } from "react-icons/bs";
 import styles from "./listing.module.css";
+import {
+  addToWatchLater,
+  removeFromWatchLater,
+} from "utils/service-requests/watchlater-services";
+import { useData } from "contexts/data-context";
+import { useAuth } from "contexts/auth-context";
 
 const VideoCard = ({ video }) => {
+  const {
+    dataState: { watchlater },
+    dataDispatch,
+  } = useData();
+  const {
+    authState: { isAuthenticated },
+  } = useAuth();
+  const navigate = useNavigate();
   const [showOptions, setShowOptions] = useState(false);
+
   return (
     <article className={`${styles.card_container} pos-rel mx-s`}>
       <div className={`${styles.thumbnail_container}  br-s pos-rel`}>
@@ -36,9 +51,26 @@ const VideoCard = ({ video }) => {
         />
         {showOptions && (
           <ul className={`${styles.options} br-s`}>
-            <li className="px-xs my-xs pointer">
-              <small> Watch Later</small>
-            </li>
+            {!watchlater.find((item) => item._id === video._id) ? (
+              <li
+                className="px-xs my-xs pointer"
+                onClick={() => {
+                  isAuthenticated
+                    ? addToWatchLater(video, dataDispatch)
+                    : navigate("/login");
+                  setShowOptions(false);
+                }}
+              >
+                <small> Watch Later</small>
+              </li>
+            ) : (
+              <li
+                className="text-danger px-xs my-xs pointer"
+                onClick={() => removeFromWatchLater(video._id, dataDispatch)}
+              >
+                <small> Remove from Watch Later</small>
+              </li>
+            )}
 
             <li className=" px-xs my-xs pointer">
               <small>Add to Playlist</small>
