@@ -7,7 +7,16 @@ const DataProvider = ({ children }) => {
   const initialState = { watchlater: [], playlists: [], history: [] };
 
   const dataReducer = (state, action) => {
-    return state;
+    switch (action.type) {
+      case "GET_WATCHLATER":
+        return { ...state, watchlater: action.payload };
+      case "ADD_TO_WATCHLATER":
+        return { ...state, watchlater: action.payload };
+      case "REMOVE_FROM_WATCHLATER":
+        return { ...state, watchlater: action.payload };
+      default:
+        return state;
+    }
   };
 
   const [dataState, dataDispatch] = useReducer(dataReducer, initialState);

@@ -3,9 +3,19 @@ import { Link } from "react-router-dom";
 import { BsMoonFill, BsPlayCircleFill, BsSun } from "react-icons/bs";
 import { useLocalStorage } from "utils/hooks/useLocalStorage";
 import styles from "./navigation.module.css";
+import { useAuth } from "contexts/auth-context";
 
 const Navbar = () => {
+  const {
+    authState: { isAuthenticated },
+    setAuthState,
+  } = useAuth();
   const [darkMode, setDarkMode] = useLocalStorage("darkMode", false);
+
+  const logoutHandler = () => {
+    setAuthState({ isAuthenticated: false, userData: "", token: "" });
+    localStorage.clear();
+  };
 
   useEffect(() => {
     darkMode
@@ -26,9 +36,15 @@ const Navbar = () => {
       <nav>
         <ul className="nav-links">
           <li className="mx-s">
-            <Link to="/login">
-              <button className="btn btn-primary">Login</button>
-            </Link>
+            {!isAuthenticated ? (
+              <Link to="/login">
+                <button className="btn btn-primary">Login</button>
+              </Link>
+            ) : (
+              <button className="btn btn-primary" onClick={logoutHandler}>
+                Logout
+              </button>
+            )}
           </li>
           <li className="mx-s">
             {!darkMode ? (
