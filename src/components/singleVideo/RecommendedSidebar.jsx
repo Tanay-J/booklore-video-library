@@ -7,7 +7,7 @@ const RecommendedSidebar = () => {
   return (
     <aside>
       <ul className="mx-xl">
-        <p className="text-dark text-xs font-bold">Recommended</p>
+        <p className="text-dark text-s font-bold">Recommended</p>
         {videoList.slice(0, 3).map((video) => {
           return (
             <li
