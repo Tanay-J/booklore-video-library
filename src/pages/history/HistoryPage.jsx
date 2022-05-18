@@ -2,6 +2,7 @@ import { HistoryVideoCard } from "components/history";
 import { Sidebar } from "components/navigation";
 import { clearHistory } from "utils/service-requests/history-services";
 import { useData } from "../../contexts/data-context";
+import styles from "../explore/explore.module.css";
 
 const HistoryPage = () => {
   const {
@@ -24,7 +25,7 @@ const HistoryPage = () => {
             </button>
           </div>
 
-          <section className={`grid grid-col-4 gap-1`}>
+          <section className={`${styles.videolist_container}`}>
             {history.map((video) => (
               <HistoryVideoCard video={video} />
             ))}
