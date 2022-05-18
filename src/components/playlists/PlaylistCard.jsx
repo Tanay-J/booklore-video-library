@@ -28,7 +28,7 @@ const PlaylistCard = ({ playlist }) => {
       <div>
         <BsThreeDotsVertical
           className={`${styles.options_btn} pointer text-dark`}
-          onClick={() => setShowOptions(!showOptions)}
+          onClick={() => setShowOptions((prevValue) => !prevValue)}
         />
         {showOptions && (
           <small
