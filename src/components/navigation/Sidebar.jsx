@@ -29,28 +29,28 @@ const Sidebar = () => {
           </li>
         </Link>
 
-        <Link to="/" className="link link-none text-dark">
+        <Link to="/watchlater" className="link link-none text-dark">
           <li
             className={`${styles.list_items} text-dark p-xs pointer text-center`}
           >
             <BsHeartFill /> <small>Watch Later</small>
           </li>
         </Link>
-        <Link to="/" className="link link-none text-dark">
+        <Link to="/playlists" className="link link-none text-dark">
           <li
             className={`${styles.list_items} text-dark p-xs pointer text-center`}
           >
             <BsFillFolderFill /> <small>Playlists</small>
           </li>
         </Link>
-        <Link to="/" className="link link-none text-dark">
+        <Link to="/likes" className="link link-none text-dark">
           <li
             className={`${styles.list_items} text-dark p-xs pointer text-center`}
           >
             <BsHandThumbsUpFill /> <small>Likes</small>
           </li>
         </Link>
-        <Link to="/" className="link link-none text-dark">
+        <Link to="/history" className="link link-none text-dark">
           <li
             className={`${styles.list_items} text-dark p-xs pointer text-center`}
           >

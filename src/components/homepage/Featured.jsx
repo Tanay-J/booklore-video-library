@@ -7,7 +7,7 @@ const Featured = () => {
   return (
     <section className={`${styles.videolist_container}`}>
       {videoList.slice(0, 4).map((video) => (
-        <VideoCard video={video} />
+        <VideoCard video={video} key={video._id} />
       ))}
     </section>
   );
