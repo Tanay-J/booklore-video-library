@@ -13,6 +13,7 @@ import {
 } from "utils/service-requests/playlist-services";
 import { useData } from "contexts/data-context";
 import { useAuth } from "contexts/auth-context";
+import { addToHistory } from "utils/service-requests/history-services";
 
 const VideoCard = ({ video }) => {
   const {
@@ -52,6 +53,7 @@ const VideoCard = ({ video }) => {
         <Link
           to={`/video/${video._id}`}
           state={{ currentVideo: video }}
+          onClick={() => isAuthenticated && addToHistory(video, dataDispatch)}
           className="link-none text-black"
         >
           <img className={`${styles.thumbnail} br-s`} src={video.thumbnail} />

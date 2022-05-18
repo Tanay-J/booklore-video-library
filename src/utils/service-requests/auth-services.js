@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getHistory } from "./history-services";
 import { getPlaylists } from "./playlist-services";
 import { getWatchlater } from "./watchlater-services";
 
@@ -24,6 +25,7 @@ const loginHandler = async (
       });
       getWatchlater(dataDispatch);
       getPlaylists(dataDispatch);
+      getHistory(dataDispatch);
       navigate(location?.state?.from?.pathname || "/");
     }
   } catch (error) {

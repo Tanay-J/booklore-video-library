@@ -4,7 +4,12 @@ const DataContext = createContext();
 const useData = () => useContext(DataContext);
 
 const DataProvider = ({ children }) => {
-  const initialState = { watchlater: [], playlists: [], history: [] };
+  const initialState = {
+    watchlater: [],
+    playlists: [],
+    history: [],
+    likes: [],
+  };
 
   const dataReducer = (state, action) => {
     switch (action.type) {
@@ -19,6 +24,10 @@ const DataProvider = ({ children }) => {
             list._id === action.payload._id ? action.payload : list
           ),
         };
+      case "SET_HISTORY":
+        return { ...state, history: action.payload };
+      case "SET_LIKES":
+        return { ...state, likes: action.payload };
       case "CLEAR_ALL":
         return initialState;
       default:
