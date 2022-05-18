@@ -1,5 +1,5 @@
 import { CategoryChips, VideoCard } from "components/listing";
-import { Navbar, Sidebar } from "components/navigation";
+import { Sidebar } from "components/navigation";
 import { useState } from "react";
 import { getVideos } from "utils/service-requests/video-services";
 import styles from "./explore.module.css";
@@ -9,8 +9,7 @@ const Explore = () => {
   const { videoList } = getVideos(category);
   return (
     <>
-      <Navbar />
-      <div className={`main-container m-s`}>
+      <main className={`main-container m-s`}>
         <Sidebar />
         <div>
           <CategoryChips setCategory={setCategory} />
@@ -20,7 +19,7 @@ const Explore = () => {
             ))}
           </article>
         </div>
-      </div>
+      </main>
     </>
   );
 };

@@ -10,7 +10,6 @@ const Watchlater = () => {
 
   return (
     <>
-      <Navbar />
       <main className="main-container m-s">
         <Sidebar />
         <div>
