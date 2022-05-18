@@ -10,6 +10,15 @@ const DataProvider = ({ children }) => {
     switch (action.type) {
       case "SET_WATCHLATER":
         return { ...state, watchlater: action.payload };
+      case "GET_PLAYLISTS":
+        return { ...state, playlists: action.payload };
+      case "UPDATE_PLAYLIST":
+        return {
+          ...state,
+          playlists: state.playlists.map((list) =>
+            list._id === action.payload._id ? action.payload : list
+          ),
+        };
       case "CLEAR_ALL":
         return initialState;
       default:

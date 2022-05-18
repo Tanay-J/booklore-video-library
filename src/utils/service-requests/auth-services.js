@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getPlaylists } from "./playlist-services";
 import { getWatchlater } from "./watchlater-services";
 
 const loginHandler = async (
@@ -22,6 +23,7 @@ const loginHandler = async (
         token: data.encodedToken,
       });
       getWatchlater(dataDispatch);
+      getPlaylists(dataDispatch);
       navigate(location?.state?.from?.pathname || "/");
     }
   } catch (error) {

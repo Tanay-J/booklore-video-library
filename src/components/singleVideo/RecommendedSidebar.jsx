@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { getVideos } from "utils/service-requests/video-services";
 import { RecommendedVideoCard } from "./RecommendedVideoCard";
 import styles from "./singleVideo.module.css";
@@ -7,7 +6,7 @@ const RecommendedSidebar = () => {
 
   return (
     <aside>
-      <ul className="mx-auto">
+      <ul className="mx-xl">
         <p className="text-dark text-xs font-bold">Recommended</p>
         {videoList.slice(0, 3).map((video) => {
           return (
