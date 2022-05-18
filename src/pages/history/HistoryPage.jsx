@@ -15,7 +15,7 @@ const HistoryPage = () => {
         <Sidebar />
         <div>
           <div className="flex justify-content-space-bet m-s">
-            <h3 className="text-dark">History</h3>
+            <p className="mx-s text-s text-dark font-bold">History</p>
             <button
               className="btn btn-round btn-outline outline-secondary mx-s"
               onClick={() => clearHistory(dataDispatch)}
