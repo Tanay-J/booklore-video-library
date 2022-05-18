@@ -119,7 +119,7 @@ const VideoCard = ({ video }) => {
                 ))}
                 <li className="my-xs">
                   <input
-                    className="input bg-transparent border-transparent text-dark"
+                    className="input bg-transparent border-transparent text-white"
                     type="text"
                     placeholder="Create Playlist"
                     onKeyDown={playlistCreator}
