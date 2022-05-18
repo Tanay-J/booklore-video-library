@@ -38,6 +38,14 @@ const VideoCard = ({ video }) => {
     setShowOptions(false);
   };
 
+  const playlistCreator = (e) => {
+    if (e.key === "Enter") {
+      if (isAuthenticated) {
+        createPlaylist(e.target.value, dataDispatch);
+        e.target.value = "";
+      } else navigate("/login");
+    }
+  };
   return (
     <article className={`${styles.card_container} pos-rel mx-s`}>
       <div className={`${styles.thumbnail_container}  br-s pos-rel`}>
@@ -114,12 +122,7 @@ const VideoCard = ({ video }) => {
                     className="input bg-transparent border-transparent text-dark"
                     type="text"
                     placeholder="Create Playlist"
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        createPlaylist(e.target.value, dataDispatch);
-                        e.target.value = "";
-                      }
-                    }}
+                    onKeyDown={playlistCreator}
                   />
                 </li>
               </ul>
