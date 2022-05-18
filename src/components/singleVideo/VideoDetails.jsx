@@ -1,8 +1,14 @@
-import { useAuth } from "contexts/auth-context";
-import { useData } from "contexts/data-context";
-import { BsHandThumbsUp, BsHeart, BsHeartFill, BsList } from "react-icons/bs";
+import {
+  BsHandThumbsUp,
+  BsHandThumbsUpFill,
+  BsHeart,
+  BsHeartFill,
+  BsList,
+} from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "contexts/auth-context";
+import { useData } from "contexts/data-context";
 import {
   addToWatchLater,
   removeFromWatchLater,
@@ -13,13 +19,17 @@ import {
   createPlaylist,
   removeFromPlaylist,
 } from "utils/service-requests/playlist-services";
+import {
+  addToLikes,
+  removeFromLikes,
+} from "utils/service-requests/likes-services";
 
 const VideoDetails = ({ video }) => {
   const {
     authState: { isAuthenticated },
   } = useAuth();
   const {
-    dataState: { watchlater, playlists },
+    dataState: { watchlater, playlists, likes },
     dataDispatch,
   } = useData();
   const [showPlaylists, setShowPlaylists] = useState(false);
@@ -37,12 +47,28 @@ const VideoDetails = ({ video }) => {
       : removeFromPlaylist(playlistId, video._id, dataDispatch);
   };
 
+  const isLiked = () => {
+    return likes.some((likedVideo) => likedVideo._id === video._id);
+  };
+
   return (
     <div>
-      <div className="flex justify-content-end gap-2 text-dark my-s ">
+      <div className="flex justify-content-end gap-2 text-dark my-s">
         <div className="flex align-items-center pointer">
-          <BsHandThumbsUp /> <small className="mx-xs">Like</small>
+          {!isLiked() ? (
+            <BsHandThumbsUp
+              className="mx-xs"
+              onClick={() => addToLikes(video, dataDispatch)}
+            />
+          ) : (
+            <BsHandThumbsUpFill
+              className="mx-xs"
+              onClick={() => removeFromLikes(video._id, dataDispatch)}
+            />
+          )}
+          <small>Like</small>
         </div>
+
         {!watchlater.find((item) => item._id === video._id) ? (
           <div
             className="flex align-items-center pointer"
@@ -107,7 +133,7 @@ const VideoDetails = ({ video }) => {
           )}
         </div>
       </div>
-      
+
       <div className={`flex justify-content-space-bet my-s`}>
         <div className="flex">
           <img
