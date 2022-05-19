@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const getHistory = async (dataDispatch) => {
   try {
@@ -43,10 +44,11 @@ const removeFromHistory = async (videoId, dataDispatch, setIsLoading) => {
     } = await axios.delete(`/api/user/history/${videoId}`, {
       headers: { authorization: token },
     });
-
+    toast.success("Removed from History");
     dataDispatch({ type: "SET_HISTORY", payload: history });
     setIsLoading(false);
   } catch (error) {
+    toast.error("Try again");
     setIsLoading(false);
     console.log(error);
   }
@@ -61,10 +63,11 @@ const clearHistory = async (dataDispatch, setIsLoading) => {
     } = await axios.delete("/api/user/history/all", {
       headers: { authorization: token },
     });
-
+    toast.success("History cleared");
     dataDispatch({ type: "SET_HISTORY", payload: history });
     setIsLoading(false);
   } catch (error) {
+    toast.error("Try again");
     setIsLoading(false);
     console.log(error);
   }

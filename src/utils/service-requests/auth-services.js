@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { getHistory } from "./history-services";
 import { getLikes } from "./likes-services";
 import { getPlaylists } from "./playlist-services";
@@ -22,6 +23,7 @@ const loginHandler = async (
     const { status, data } = await axios.post("/api/auth/login", loginData);
     if (status === 200) {
       setToken(data.encodedToken);
+      toast.success("Logged in successfully");
       setAuthState({
         isAuthenticated: true,
         token: data.encodedToken,
@@ -51,6 +53,7 @@ const signupHandler = async (
     setIsLoading(true);
     const { status } = await axios.post("/api/auth/signup", signUpData);
     if (status === 201) {
+      toast.success("Signed Up Successfully");
       setErrorMsg("");
       setIsLoading(false);
       navigate("/login");
