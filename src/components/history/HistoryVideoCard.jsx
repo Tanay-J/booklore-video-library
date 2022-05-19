@@ -9,9 +9,11 @@ import {
   removeFromPlaylist,
 } from "utils/service-requests/playlist-services";
 import { removeFromHistory } from "utils/service-requests/history-services";
+import { InlineLoader } from "components/loader";
 
 const HistoryVideoCard = ({ video }) => {
   const [showOptions, setShowOptions] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const {
     dataState: { playlists },
     dataDispatch,
@@ -51,9 +53,15 @@ const HistoryVideoCard = ({ video }) => {
           <ul className={`${styles.options} br-s`}>
             <li
               className="text-danger px-xs my-xs pointer"
-              onClick={() => removeFromHistory(video._id, dataDispatch)}
+              onClick={() =>
+                removeFromHistory(video._id, dataDispatch, setIsLoading)
+              }
             >
-              <small>Remove from History</small>
+              {isLoading ? (
+                <InlineLoader />
+              ) : (
+                <small>Remove from History</small>
+              )}
             </li>
             <li className=" px-xs my-xs pointer">
               <small>Add to Playlist</small>

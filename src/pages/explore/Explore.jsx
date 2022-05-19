@@ -6,7 +6,8 @@ import styles from "./explore.module.css";
 
 const Explore = () => {
   const [category, setCategory] = useState("");
-  const { videoList } = getVideos(category);
+  const [isLoading, setIsLoading] = useState(false);
+  const { videoList } = getVideos(category, setIsLoading);
   return (
     <>
       <main className={`main-container m-s`}>
@@ -15,9 +16,10 @@ const Explore = () => {
           <CategoryChips setCategory={setCategory} />
           <article className={`${styles.videolist_container}`}>
             {videoList.map((video) => (
-              <VideoCard video={video} key={video._id} />
+              <VideoCard video={video} isLoading={isLoading} key={video._id} />
             ))}
           </article>
+          
         </div>
       </main>
     </>

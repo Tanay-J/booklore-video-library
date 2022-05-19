@@ -34,8 +34,9 @@ const addToHistory = async (video, dataDispatch) => {
   }
 };
 
-const removeFromHistory = async (videoId, dataDispatch) => {
+const removeFromHistory = async (videoId, dataDispatch, setIsLoading) => {
   try {
+    setIsLoading(true);
     const token = localStorage.getItem("token");
     const {
       data: { history },
@@ -44,13 +45,16 @@ const removeFromHistory = async (videoId, dataDispatch) => {
     });
 
     dataDispatch({ type: "SET_HISTORY", payload: history });
+    setIsLoading(false);
   } catch (error) {
+    setIsLoading(false);
     console.log(error);
   }
 };
 
-const clearHistory = async (dataDispatch) => {
+const clearHistory = async (dataDispatch, setIsLoading) => {
   try {
+    setIsLoading(true);
     const token = localStorage.getItem("token");
     const {
       data: { history },
@@ -59,7 +63,9 @@ const clearHistory = async (dataDispatch) => {
     });
 
     dataDispatch({ type: "SET_HISTORY", payload: history });
+    setIsLoading(false);
   } catch (error) {
+    setIsLoading(false);
     console.log(error);
   }
 };

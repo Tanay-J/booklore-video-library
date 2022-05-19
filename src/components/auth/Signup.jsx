@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signupHandler } from "utils/service-requests/auth-services";
 import styles from "./auth.module.css";
+import { Loader } from "components/loader";
 
 const Signup = () => {
   const initialData = {
@@ -13,6 +14,7 @@ const Signup = () => {
   };
   const [signUpData, setSignUpData] = useState(initialData);
   const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -30,7 +32,7 @@ const Signup = () => {
         setErrorMsg("Password does not match");
       } else {
         setErrorMsg("");
-        signupHandler(signUpData, navigate, setErrorMsg);
+        signupHandler(signUpData, navigate, setErrorMsg, setIsLoading);
       }
     } else setErrorMsg("All fields are mandatory");
   };
@@ -117,6 +119,7 @@ const Signup = () => {
               />
             </div>
             {errorMsg && <p className="text-danger text-center">{errorMsg}</p>}
+            {isLoading && <Loader />}
             <div className="flex flex-col">
               <button className="btn btn-primary my-m" onClick={dataValidation}>
                 Sign Up

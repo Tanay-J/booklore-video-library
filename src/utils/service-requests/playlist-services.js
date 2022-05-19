@@ -62,8 +62,9 @@ const removeFromPlaylist = async (playlistId, videoId, dataDispatch) => {
   }
 };
 
-const deletePlaylist = async (playlistId, dataDispatch) => {
+const deletePlaylist = async (playlistId, dataDispatch, setIsLoading) => {
   try {
+    setIsLoading(true);
     const token = localStorage.getItem("token");
     const {
       data: { playlists },
@@ -71,7 +72,9 @@ const deletePlaylist = async (playlistId, dataDispatch) => {
       headers: { authorization: token },
     });
     dataDispatch({ type: "GET_PLAYLISTS", payload: playlists });
+    setIsLoading(false);
   } catch (error) {
+    setIsLoading(false);
     console.log(error);
   }
 };
