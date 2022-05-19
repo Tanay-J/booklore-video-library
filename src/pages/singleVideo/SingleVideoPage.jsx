@@ -12,7 +12,7 @@ const SingleVideoPage = () => {
     <>
       <main className={`${styles.main_container} my-s mx-l`}>
         <section key={currentVideo._id}>
-          <p className="text-dark text-xs font-bold">{currentVideo.title}</p>
+          <p className="text-dark text-s font-bold">{currentVideo.title}</p>
           <ReactPlayer url={currentVideo.url} width="100%" height="30rem" />
           <VideoDetails video={currentVideo} />
         </section>

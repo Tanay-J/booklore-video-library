@@ -6,12 +6,17 @@ import {
   addToWatchLater,
   removeFromWatchLater,
 } from "utils/service-requests/watchlater-services";
+import {
+  addToPlaylist,
+  createPlaylist,
+  removeFromPlaylist,
+} from "utils/service-requests/playlist-services";
 import { useData } from "contexts/data-context";
 import { useAuth } from "contexts/auth-context";
 
 const VideoCard = ({ video }) => {
   const {
-    dataState: { watchlater },
+    dataState: { watchlater, playlists },
     dataDispatch,
   } = useData();
   const {
@@ -20,6 +25,27 @@ const VideoCard = ({ video }) => {
   const navigate = useNavigate();
   const [showOptions, setShowOptions] = useState(false);
 
+  const isInPlaylist = (playlist) => {
+    return playlist.videos.some(
+      (playlistVideo) => playlistVideo._id === video._id
+    );
+  };
+
+  const playlistOpsHandler = (e, playlistId) => {
+    e.target.checked
+      ? addToPlaylist(playlistId, video, dataDispatch)
+      : removeFromPlaylist(playlistId, video._id, dataDispatch);
+    setShowOptions(false);
+  };
+
+  const playlistCreator = (e) => {
+    if (e.key === "Enter") {
+      if (isAuthenticated) {
+        createPlaylist(e.target.value, dataDispatch);
+        e.target.value = "";
+      } else navigate("/login");
+    }
+  };
   return (
     <article className={`${styles.card_container} pos-rel mx-s`}>
       <div className={`${styles.thumbnail_container}  br-s pos-rel`}>
@@ -74,6 +100,32 @@ const VideoCard = ({ video }) => {
 
             <li className=" px-xs my-xs pointer">
               <small>Add to Playlist</small>
+              <ul>
+                {playlists.map((list) => (
+                  <li>
+                    <small>
+                      <label htmlFor={list.title}>
+                        <input
+                          type="checkbox"
+                          checked={isInPlaylist(list)}
+                          id={list.title}
+                          value={list.title}
+                          onChange={(e) => playlistOpsHandler(e, list._id)}
+                        />
+                        {list.title}
+                      </label>
+                    </small>
+                  </li>
+                ))}
+                <li className="my-xs">
+                  <input
+                    className="input bg-transparent border-transparent text-white"
+                    type="text"
+                    placeholder="Create Playlist"
+                    onKeyDown={playlistCreator}
+                  />
+                </li>
+              </ul>
             </li>
           </ul>
         )}

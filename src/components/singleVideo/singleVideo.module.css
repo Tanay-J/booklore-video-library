@@ -19,3 +19,13 @@
 .video_details {
   grid-area: details;
 }
+.options {
+  position: absolute;
+  right: 105%;
+  bottom: 0px;
+  background-color: rgba(66, 65, 65, 0.9);
+  color: var(--text-white);
+  list-style-type: none;
+  padding: 4px;
+  z-index: 1;
+}

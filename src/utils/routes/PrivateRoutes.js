@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Watchlater } from "pages";
+import { AllPlaylists, PlaylistPage, Watchlater } from "pages";
 import { RequiresAuth } from "components/auth";
 
 const PrivateRoutes = () => {
@@ -10,6 +10,22 @@ const PrivateRoutes = () => {
         element={
           <RequiresAuth>
             <Watchlater />
+          </RequiresAuth>
+        }
+      />
+      <Route
+        path="/playlists"
+        element={
+          <RequiresAuth>
+            <AllPlaylists />
+          </RequiresAuth>
+        }
+      />
+      <Route
+        path="/playlists/:id"
+        element={
+          <RequiresAuth>
+            <PlaylistPage />
           </RequiresAuth>
         }
       />

@@ -3,50 +3,30 @@
   grid-template-columns: 3rem 6rem auto auto;
   grid-template-rows: auto;
   grid-template-areas:
-    "image image image image"
-    "avatar details details options";
+    "image image image"
+    "details details options";
   height: 18rem;
   width: 18rem;
 }
-.play_btn {
-  display: none;
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  cursor: pointer;
-}
 .thumbnail_container {
   grid-area: image;
-}
-.thumbnail_container:hover .play_btn {
-  display: block;
 }
 .thumbnail {
   transition: 0.3s ease-in-out;
   height: 12rem;
   width: 100%;
 }
-.thumbnail:hover {
-  filter: opacity(0.6);
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
-}
-.avatar {
-  grid-area: avatar;
+.no_thumbnail {
+  height: 12rem;
+  width: 100%;
 }
 .video_details {
   grid-area: details;
-}
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 .options_btn {
   grid-area: options;
   position: absolute;
   bottom: 5%;
-  right: 0;
 }
 .options {
   position: absolute;
@@ -54,10 +34,5 @@ ul {
   bottom: 0px;
   background-color: rgba(66, 65, 65, 0.9);
   color: var(--text-white);
-  list-style-type: none;
-  padding: 4px;
   z-index: 1;
-}
-.chips {
-  border-radius: 3rem;
 }

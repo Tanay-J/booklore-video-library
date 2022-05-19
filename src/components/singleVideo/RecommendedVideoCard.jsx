@@ -1,14 +1,18 @@
+import { Link } from "react-router-dom";
 import styles from "./singleVideo.module.css";
 
 const RecommendedVideoCard = ({ video }) => {
   return (
     <>
       <div className={`${styles.thumbnail_container} br-s`}>
-        <img
-          className={`${styles.thumbnail} pointer br-s`}
-          src={video.thumbnail}
-        />
+        <Link to={`/video/${video._id}`} state={{ currentVideo: video }}>
+          <img
+            className={`${styles.thumbnail} pointer br-s`}
+            src={video.thumbnail}
+          />
+        </Link>
       </div>
+
       <img
         className={`${styles.avatar} avatar-circle avatar-s`}
         src={video.creatorAvatar}
