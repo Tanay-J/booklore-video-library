@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { HistoryVideoCard } from "components/history";
+import { InlineLoader } from "components/loader";
 import { Sidebar } from "components/navigation";
 import { clearHistory } from "utils/service-requests/history-services";
-import { useData } from "../../contexts/data-context";
+import { useData } from "contexts/data-context";
 import styles from "../explore/explore.module.css";
 
 const HistoryPage = () => {
@@ -9,6 +11,7 @@ const HistoryPage = () => {
     dataState: { history },
     dataDispatch,
   } = useData();
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <>
@@ -19,9 +22,9 @@ const HistoryPage = () => {
             <p className="mx-s text-s text-dark font-bold">History</p>
             <button
               className="btn btn-round btn-outline outline-secondary mx-s"
-              onClick={() => clearHistory(dataDispatch)}
+              onClick={() => clearHistory(dataDispatch, setIsLoading)}
             >
-              Clear
+              {isLoading ? <InlineLoader /> : "Clear"}
             </button>
           </div>
 

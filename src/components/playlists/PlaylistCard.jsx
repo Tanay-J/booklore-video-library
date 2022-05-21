@@ -4,10 +4,12 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { useData } from "contexts/data-context";
 import { deletePlaylist } from "utils/service-requests/playlist-services";
 import styles from "./playlists.module.css";
+import { InlineLoader } from "components/loader";
 
 const PlaylistCard = ({ playlist }) => {
   const { _id, title, description, videos } = playlist;
   const [showOptions, setShowOptions] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { dataDispatch } = useData();
 
   return (
@@ -32,10 +34,10 @@ const PlaylistCard = ({ playlist }) => {
         />
         {showOptions && (
           <small
-            className={`${styles.options} pointer px-xs mx-xs br-s`}
-            onClick={() => deletePlaylist(_id, dataDispatch)}
+            className={`${styles.options} pointer p-xs mx-xs br-s`}
+            onClick={() => deletePlaylist(_id, dataDispatch, setIsLoading)}
           >
-            Delete Playlist
+            {isLoading ? <InlineLoader /> : "Delete Playlist"}
           </small>
         )}
       </div>

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const getVideos = (category) => {
+const getVideos = (category, setIsLoading) => {
   const [videoList, setVideoList] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
+        setIsLoading(true);
         const {
           data: { videos },
         } = await axios.get("/api/videos");
@@ -17,7 +18,9 @@ const getVideos = (category) => {
           );
           setVideoList(filteredVideos);
         } else setVideoList(videos);
+        setIsLoading(false);
       } catch (error) {
+        setIsLoading(false);
         console.log(error);
       }
     })();

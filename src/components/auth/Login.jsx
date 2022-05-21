@@ -6,6 +6,7 @@ import { loginHandler } from "utils/service-requests/auth-services";
 import { useLocalStorage } from "utils/hooks/useLocalStorage";
 import styles from "./auth.module.css";
 import { useData } from "contexts/data-context";
+import { Loader } from "components/loader";
 
 const Login = () => {
   const {
@@ -19,6 +20,7 @@ const Login = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState("");
   const [inputType, setInputType] = useState("password");
+  const [isLoading, setIsLoading] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -96,6 +98,9 @@ const Login = () => {
               {errorMsg && (
                 <p className="text-danger text-center">{errorMsg}</p>
               )}
+
+              {isLoading && <Loader />}
+
               <div className="flex flex-col">
                 {loginData.email && loginData.password ? (
                   <button
@@ -107,6 +112,7 @@ const Login = () => {
                         setAuthState,
                         setToken,
                         setErrorMsg,
+                        setIsLoading,
                         location,
                         navigate,
                         event

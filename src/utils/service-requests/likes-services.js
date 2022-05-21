@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const getLikes = async (dataDispatch) => {
   try {
@@ -26,6 +27,7 @@ const addToLikes = async (video, dataDispatch) => {
         headers: { authorization: token },
       }
     );
+    toast.success("Added to Liked Videos");
     dataDispatch({ type: "SET_LIKES", payload: likes });
   } catch (error) {
     console.log(error);
@@ -40,6 +42,7 @@ const removeFromLikes = async (videoId, dataDispatch) => {
     } = await axios.delete(`/api/user/likes/${videoId}`, {
       headers: { authorization: token },
     });
+    toast.success("Removed from Liked Videos");
     dataDispatch({ type: "SET_LIKES", payload: likes });
   } catch (error) {
     console.log(error);
