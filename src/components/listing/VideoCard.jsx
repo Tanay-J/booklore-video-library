@@ -48,12 +48,22 @@ const VideoCard = ({ video, isLoading }) => {
       } else navigate("/login");
     }
   };
+
+  const formatDate = () => {
+    const videoDate = new Date(Date.parse(video.createdOn));
+    const months = ['Jan', 'Feb', 'Mar', 'Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    const date = videoDate.getDate();
+    const month = months[videoDate.getMonth()];
+    const year = videoDate.getFullYear();
+
+    return `${date} ${month} ${year}`
+  };
   return (
     <div>
       {isLoading ? (
         <VideoLoader />
       ) : (
-        <article className={`${styles.card_container} pos-rel mx-s`}>
+        <article className={`${styles.card_container} pos-rel mx-s my-xs`}>
           <div className={`${styles.thumbnail_container}  br-s pos-rel`}>
             <Link
               to={`/video/${video._id}`}
@@ -83,6 +93,9 @@ const VideoCard = ({ video, isLoading }) => {
             <p className="text-dark font-bold">{video.title}</p>
             <small className="text-gray">{video.creator}</small>
             <p className="text-gray text-xxs">{video.views} views</p>
+            <p className="text-gray text-xxs">
+              {formatDate()}
+            </p>
           </div>
 
           <div>
