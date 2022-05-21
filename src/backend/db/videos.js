@@ -5,6 +5,14 @@
 const getThumbnail = (id) => `https://img.youtube.com/vi/${id}/sddefault.jpg`;
 const getViews = () => Math.floor(Math.random() * 10000000 + 10000);
 const getURL = (id) => `https://www.youtube.com/watch?v=${id}`;
+const getRandomDate = () => {
+  const startDate = new Date(2019, 1, 5);
+  const endDate = new Date();
+  return new Date(
+    startDate.getTime() +
+      Math.random() * (endDate.getTime() - startDate.getTime())
+  );
+};
 
 export const videos = [
   {
@@ -18,7 +26,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLSWd0-HAZHehT9aad84m27uDgIAi86IS6sGsmTH=s176-c-k-c0x00ffffff-no-rj",
     thumbnail: getThumbnail("lCrMAtbBUJA"),
     views: getViews(),
-    createdOn: "",
+    createdOn: getRandomDate(),
     url: getURL("lCrMAtbBUJA"),
   },
   {
@@ -32,7 +40,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLSAltH3yarKh0eytWLSLtB9-kPpMLM5EejH-GAZIg=s176-c-k-c0x00ffffff-no-rj",
     thumbnail: getThumbnail("6Gw5dK48MtI"),
     views: getViews(),
-    createdOn: "",
+    createdOn: getRandomDate(),
     url: getURL("6Gw5dK48MtI"),
   },
   {
@@ -46,7 +54,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLTwQUwbdqTyU1FbjltMB_4gYp1kDnAKmGGNazseBA=s176-c-k-c0x00ffffff-no-rj",
     thumbnail: getThumbnail("pZVZdgY25uY"),
     views: getViews(),
-    createdOn: "",
+    createdOn: getRandomDate(),
     url: getURL("pZVZdgY25uY"),
   },
   {
@@ -60,7 +68,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLSAltH3yarKh0eytWLSLtB9-kPpMLM5EejH-GAZIg=s176-c-k-c0x00ffffff-no-rj",
     thumbnail: getThumbnail("6ibCtsHgz3Y"),
     views: getViews(),
-    createdOn: "",
+    createdOn: getRandomDate(),
     url: getURL("6ibCtsHgz3Y"),
   },
   {
@@ -74,7 +82,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLTf5wkQnZ2YAsnb5DUsgQLm65Pxavs6eOkrp_yWFg=s176-c-k-c0x00ffffff-no-rj",
     thumbnail: getThumbnail("K4p1o1jNAiw"),
     views: getViews(),
-    createdOn: "",
+    createdOn: getRandomDate(),
     url: getURL("K4p1o1jNAiw"),
   },
   {
@@ -88,7 +96,7 @@ export const videos = [
       "https://yt3.ggpht.com/AQAm4UynD1hE2IdADQm7-K5QJ9z2aVCoEG1NdvgRAO0HhCEDNkfk1f82JFAZMPS_-OCBMGGuo54=s176-c-k-c0x00ffffff-no-rj",
     thumbnail: getThumbnail("M0qL4zzIuC8"),
     views: getViews(),
-    createdOn: "",
+    createdOn: getRandomDate(),
     url: getURL("M0qL4zzIuC8"),
   },
   {
@@ -101,7 +109,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLSMbXBHcmhwIQeNIquqA3TGl2g7LFsOuYmeIam2Iw=s176-c-k-c0x00ffffff-no-rj",
     thumbnail: getThumbnail("dIrrROL2pRE"),
     views: getViews(),
-    createdOn: "",
+    createdOn: getRandomDate(),
     url: getURL("dIrrROL2pRE"),
   },
   {
@@ -115,7 +123,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLQDPaBmodxnFmWV-PydOseZ24S_XkDEzYYsQPounw=s176-c-k-c0x00ffffff-no-rj",
     thumbnail: getThumbnail("305nY-iQWck"),
     views: getViews(),
-    createdOn: "",
+    createdOn: getRandomDate(),
     url: getURL("305nY-iQWck"),
   },
   {
@@ -128,7 +136,7 @@ export const videos = [
       "https://yt3.ggpht.com/nvTtRxqUEr5biFiY1cfv5YUXtgOYBIuwRxQzLZBVkwhRSHfbADxJpB6gMsGszFcAjxJWIBqLFA=s176-c-k-c0x00ffffff-no-rj",
     thumbnail: getThumbnail("49eU_xrOS7A"),
     views: getViews(),
-    createdOn: "",
+    createdOn: getRandomDate(),
     url: getURL("49eU_xrOS7A"),
   },
   {
@@ -142,7 +150,7 @@ export const videos = [
       "https://yt3.ggpht.com/X9eoDIB9cgb1s-kvATRs1lQDcU4Fjc15NDV9s9FF8ck7IsA8u7OdijaernoDV9LLdePgjlt_=s176-c-k-c0x00ffffff-no-rj",
     thumbnail: getThumbnail("DpyMvwF4OSE"),
     views: getViews(),
-    createdOn: "",
+    createdOn: getRandomDate(),
     url: getURL("DpyMvwF4OSE"),
   },
   {
@@ -156,7 +164,8 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLQDPaBmodxnFmWV-PydOseZ24S_XkDEzYYsQPounw=s176-c-k-c0x00ffffff-no-rj",
     thumbnail: getThumbnail("MA3uwVMuqAc"),
     views: getViews(),
-    createdOn: "",
+    createdOn: getRandomDate(),
     url: getURL("MA3uwVMuqAc"),
   },
 ];
+
