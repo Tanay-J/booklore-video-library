@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { getVideos } from "utils/service-requests/video-services";
 import { RecommendedVideoCard } from "./RecommendedVideoCard";
 import styles from "./singleVideo.module.css";
 const RecommendedSidebar = () => {
-  const { videoList } = getVideos();
+  const [isLoading, setIsLoading] = useState(false);
+  const { videoList } = getVideos("", setIsLoading);
 
   return (
     <aside>
@@ -14,7 +16,7 @@ const RecommendedSidebar = () => {
               className={`${styles.card_container_no_button} my-xs`}
               key={video._id}
             >
-              <RecommendedVideoCard video={video} />
+              <RecommendedVideoCard video={video} isLoading={isLoading} />
             </li>
           );
         })}
