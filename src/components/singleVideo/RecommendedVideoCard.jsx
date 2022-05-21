@@ -1,8 +1,11 @@
 import { VideoLoader } from "components/loader";
 import { Link } from "react-router-dom";
+import { addToHistory } from "utils/service-requests/history-services";
+import { useData } from "contexts/data-context";
 import styles from "./singleVideo.module.css";
 
 const RecommendedVideoCard = ({ video, isLoading }) => {
+  const { dataDispatch } = useData();
   return (
     <>
       {isLoading ? (
@@ -10,7 +13,11 @@ const RecommendedVideoCard = ({ video, isLoading }) => {
       ) : (
         <>
           <div className={`${styles.thumbnail_container} br-s`}>
-            <Link to={`/video/${video._id}`} state={{ currentVideo: video }}>
+            <Link
+              to={`/video/${video._id}`}
+              state={{ currentVideo: video }}
+              onClick={() => addToHistory(video, dataDispatch)}
+            >
               <img
                 className={`${styles.thumbnail} pointer br-s`}
                 src={video.thumbnail}
