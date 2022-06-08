@@ -32,14 +32,15 @@ const loginHandler = async (
       getPlaylists(dataDispatch);
       getHistory(dataDispatch);
       getLikes(dataDispatch);
-      setIsLoading(false);
       navigate(location?.state?.from?.pathname || "/");
     }
   } catch (error) {
-    setIsLoading(false);
     if (error.response.status === 401) {
+      toast.error("Invalid credentials");
       setErrorMsg("The credentials you entered are invalid");
-    } else console.log(error);
+    } else throw new Error(error);
+  } finally {
+    setIsLoading(false);
   }
 };
 
@@ -55,14 +56,15 @@ const signupHandler = async (
     if (status === 201) {
       toast.success("Signed Up Successfully");
       setErrorMsg("");
-      setIsLoading(false);
       navigate("/login");
     }
   } catch (error) {
-    setIsLoading(false);
     if (error.response.status === 422) {
-      setErrorMsg("Email Already Exists.");
-    } else console.log(error);
+      toast.error("Email already exists");
+      setErrorMsg("Email already exists");
+    } else throw new Error(error);
+  } finally {
+    setIsLoading(false);
   }
 };
 

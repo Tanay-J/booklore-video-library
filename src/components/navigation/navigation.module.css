@@ -3,6 +3,10 @@
   justify-content: space-between;
   background-color: var(--text-light);
   border-radius: 0;
+  transition: 0.2s;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 .logo {
   display: flex;
@@ -34,6 +38,8 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  position: sticky;
+  top: 15%;
 }
 .list_items:hover {
   background-color: var(--gray-light);

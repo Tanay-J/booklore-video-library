@@ -18,10 +18,11 @@ const getVideos = (category, setIsLoading) => {
           );
           setVideoList(filteredVideos);
         } else setVideoList(videos);
-        setIsLoading(false);
       } catch (error) {
+        toast.error("Something went wrong, try again!");
+        throw new Error(error);
+      } finally {
         setIsLoading(false);
-        console.log(error);
       }
     })();
   }, [category]);
@@ -40,7 +41,8 @@ const getCategories = () => {
         } = await axios.get("/api/categories");
         setCategories(categories);
       } catch (error) {
-        console.log(error);
+        toast.error("Something went wrong, try again!");
+        throw new Error(error);
       }
     })();
   }, []);

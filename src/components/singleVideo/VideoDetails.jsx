@@ -5,7 +5,6 @@ import {
   BsHeartFill,
   BsList,
 } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "contexts/auth-context";
 import { useData } from "contexts/data-context";
@@ -23,6 +22,7 @@ import {
   addToLikes,
   removeFromLikes,
 } from "utils/service-requests/likes-services";
+import { toast } from "react-toastify";
 
 const VideoDetails = ({ video }) => {
   const {
@@ -33,7 +33,6 @@ const VideoDetails = ({ video }) => {
     dataDispatch,
   } = useData();
   const [showPlaylists, setShowPlaylists] = useState(false);
-  const navigate = useNavigate();
 
   const isInPlaylist = (playlist) => {
     return playlist.videos.some(
@@ -51,6 +50,14 @@ const VideoDetails = ({ video }) => {
     return likes.some((likedVideo) => likedVideo._id === video._id);
   };
 
+  const handleCreatePlaylist = (e) => {
+    if (e.key === "Enter") {
+      if (isAuthenticated) {
+        createPlaylist(e.target.value, dataDispatch);
+        e.target.value = "";
+      } else toast.error("Please Login first");
+    }
+  };
   return (
     <div>
       <div className="flex justify-content-end gap-2 text-dark my-s">
@@ -58,7 +65,11 @@ const VideoDetails = ({ video }) => {
           {!isLiked() ? (
             <BsHandThumbsUp
               className="mx-xs"
-              onClick={() => addToLikes(video, dataDispatch)}
+              onClick={() =>
+                isAuthenticated
+                  ? addToLikes(video, dataDispatch)
+                  : toast.error("Please Login first")
+              }
             />
           ) : (
             <BsHandThumbsUpFill
@@ -75,7 +86,7 @@ const VideoDetails = ({ video }) => {
             onClick={() =>
               isAuthenticated
                 ? addToWatchLater(video, dataDispatch)
-                : navigate("/login")
+                : toast.error("Please Login first")
             }
           >
             <BsHeart /> <small className="mx-xs">Add to Watch Later</small>
@@ -121,12 +132,7 @@ const VideoDetails = ({ video }) => {
                   className="input bg-transparent border-transparent text-dark"
                   type="text"
                   placeholder="Create Playlist"
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      createPlaylist(e.target.value, dataDispatch);
-                      e.target.value = "";
-                    }
-                  }}
+                  onKeyDown={handleCreatePlaylist}
                 />
               </li>
             </ul>
@@ -145,7 +151,6 @@ const VideoDetails = ({ video }) => {
             <small className="text-gray">{video.views} views</small>
           </div>
         </div>
-        <button className="btn btn-primary">Subscribe</button>
       </div>
       <div className="text-dark my-s">
         <strong>Description</strong>

@@ -18,10 +18,10 @@ const HistoryPage = () => {
       <main className={`main-container m-s`}>
         <Sidebar />
         <div>
-          <div className="flex justify-content-space-bet m-s">
+          <div className="flex justify-content-space-bet">
             <p className="mx-s text-s text-dark font-bold">History</p>
             <button
-              className="btn btn-round btn-outline outline-secondary mx-s"
+              className="btn btn-round btn-outline outline-secondary mx-m"
               onClick={() => clearHistory(dataDispatch, setIsLoading)}
             >
               {isLoading ? <InlineLoader /> : "Clear"}

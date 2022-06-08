@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   BsClockFill,
   BsCompassFill,
@@ -10,53 +10,81 @@ import {
 import styles from "./navigation.module.css";
 
 const Sidebar = () => {
+  const activeStyle = ({ isActive }) => ({
+    color: isActive ? "orange" : "",
+    fontWeight: "400",
+  });
   return (
     <aside className={`${styles.sidebar_container} mx-m my-xs`}>
       <ul className={`${styles.sidebar_list}`}>
-        <Link to="/" className="link link-none text-dark ">
-          <li
-            className={`${styles.list_items} text-dark p-xs pointer text-center`}
-          >
+        <li
+          className={`${styles.list_items} text-dark p-xs pointer text-center`}
+        >
+          <NavLink to="/" className="link link-none text-dark ">
             <BsHouseFill />
-            <small className="">Home</small>
-          </li>
-        </Link>
-        <Link to="/explore" className="link link-none text-dark">
-          <li
-            className={`${styles.list_items} text-dark p-xs pointer text-center`}
+            <small className="">Home</small>{" "}
+          </NavLink>
+        </li>
+
+        <li
+          className={`${styles.list_items} text-dark p-xs pointer text-center`}
+        >
+          <NavLink
+            to="/explore"
+            style={activeStyle}
+            className="link link-none text-dark"
           >
             <BsCompassFill /> <small>Explore</small>
-          </li>
-        </Link>
+          </NavLink>
+        </li>
 
-        <Link to="/watchlater" className="link link-none text-dark">
-          <li
-            className={`${styles.list_items} text-dark p-xs pointer text-center`}
+        <li
+          className={`${styles.list_items} text-dark p-xs pointer text-center`}
+        >
+          <NavLink
+            to="/watchlater"
+            style={activeStyle}
+            className="link link-none text-dark"
           >
             <BsHeartFill /> <small>Watch Later</small>
-          </li>
-        </Link>
-        <Link to="/playlists" className="link link-none text-dark">
-          <li
-            className={`${styles.list_items} text-dark p-xs pointer text-center`}
+          </NavLink>
+        </li>
+
+        <li
+          className={`${styles.list_items} text-dark p-xs pointer text-center`}
+        >
+          <NavLink
+            to="/playlists"
+            style={activeStyle}
+            className="link link-none text-dark"
           >
             <BsFillFolderFill /> <small>Playlists</small>
-          </li>
-        </Link>
-        <Link to="/likes" className="link link-none text-dark">
-          <li
-            className={`${styles.list_items} text-dark p-xs pointer text-center`}
+          </NavLink>
+        </li>
+
+        <li
+          className={`${styles.list_items} text-dark p-xs pointer text-center`}
+        >
+          <NavLink
+            to="/likes"
+            style={activeStyle}
+            className="link link-none text-dark"
           >
             <BsHandThumbsUpFill /> <small>Likes</small>
-          </li>
-        </Link>
-        <Link to="/history" className="link link-none text-dark">
-          <li
-            className={`${styles.list_items} text-dark p-xs pointer text-center`}
+          </NavLink>
+        </li>
+
+        <li
+          className={`${styles.list_items} text-dark p-xs pointer text-center`}
+        >
+          <NavLink
+            to="/history"
+            style={activeStyle}
+            className="link link-none text-dark"
           >
             <BsClockFill /> <small>History</small>
-          </li>
-        </Link>
+          </NavLink>
+        </li>
       </ul>
     </aside>
   );
