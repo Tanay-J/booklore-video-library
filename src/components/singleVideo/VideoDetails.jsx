@@ -151,7 +151,6 @@ const VideoDetails = ({ video }) => {
             <small className="text-gray">{video.views} views</small>
           </div>
         </div>
-        <button className="btn btn-primary">Subscribe</button>
       </div>
       <div className="text-dark my-s">
         <strong>Description</strong>
