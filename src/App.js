@@ -1,4 +1,3 @@
-import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import { PrivateRoutes, PublicRoutes } from "utils/routes";
 import { Navbar } from "components/navigation";
