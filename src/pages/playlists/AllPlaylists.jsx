@@ -13,6 +13,7 @@ const AllPlaylists = () => {
     <main className={`main-container m-s`}>
       <Sidebar />
       <div>
+      <p className="mx-s text-s text-dark font-bold">Playlists</p>
         <section className={`${styles.videolist_container}`}>
           {playlists.map((playlist) => (
             <PlaylistCard playlist={playlist} />
