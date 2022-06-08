@@ -27,7 +27,7 @@ const Navbar = () => {
   }, [darkMode]);
 
   return (
-    <header className={`${styles.nav_header} nav-bg-dark px-xl py-s`}>
+    <header className={`${styles.nav_header} card-shadow nav-bg-dark px-xl py-s`}>
       <div className={`${styles.logo}`}>
         <BsPlayCircleFill className={`${styles.logo_icon}`} />
         <Link to="/" className="text-dark link link-none">

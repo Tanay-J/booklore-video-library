@@ -3,6 +3,7 @@
   justify-content: space-between;
   background-color: var(--text-light);
   border-radius: 0;
+  transition: 0.2s;
 }
 .logo {
   display: flex;
