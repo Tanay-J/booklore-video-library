@@ -11,7 +11,8 @@ const getLikes = async (dataDispatch) => {
     });
     dataDispatch({ type: "SET_LIKES", payload: likes });
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong, try again!");
+    throw new Error(error);
   }
 };
 
@@ -30,7 +31,8 @@ const addToLikes = async (video, dataDispatch) => {
     toast.success("Added to Liked Videos");
     dataDispatch({ type: "SET_LIKES", payload: likes });
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong, try again!");
+    throw new Error(error);
   }
 };
 
@@ -45,7 +47,8 @@ const removeFromLikes = async (videoId, dataDispatch) => {
     toast.success("Removed from Liked Videos");
     dataDispatch({ type: "SET_LIKES", payload: likes });
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong, try again!");
+    throw new Error(error);
   }
 };
 

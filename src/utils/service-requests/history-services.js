@@ -12,7 +12,8 @@ const getHistory = async (dataDispatch) => {
 
     dataDispatch({ type: "SET_HISTORY", payload: history });
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong, try again!");
+    throw new Error(error);
   }
 };
 
@@ -31,7 +32,8 @@ const addToHistory = async (video, dataDispatch) => {
 
     dataDispatch({ type: "SET_HISTORY", payload: history });
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong, try again!");
+    throw new Error(error);
   }
 };
 
@@ -46,11 +48,11 @@ const removeFromHistory = async (videoId, dataDispatch, setIsLoading) => {
     });
     toast.success("Removed from History");
     dataDispatch({ type: "SET_HISTORY", payload: history });
-    setIsLoading(false);
   } catch (error) {
-    toast.error("Try again");
+    toast.error("Something went wrong, try again!");
+    throw new Error(error);
+  } finally {
     setIsLoading(false);
-    console.log(error);
   }
 };
 
@@ -65,11 +67,11 @@ const clearHistory = async (dataDispatch, setIsLoading) => {
     });
     toast.success("History cleared");
     dataDispatch({ type: "SET_HISTORY", payload: history });
-    setIsLoading(false);
   } catch (error) {
-    toast.error("Try again");
+    toast.error("Something went wrong, try again!");
+    throw new Error(error);
+  } finally {
     setIsLoading(false);
-    console.log(error);
   }
 };
 

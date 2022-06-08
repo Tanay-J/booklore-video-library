@@ -11,7 +11,8 @@ const getPlaylists = async (dataDispatch) => {
     });
     dataDispatch({ type: "GET_PLAYLISTS", payload: playlists });
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong, try again!");
+    throw new Error(error);
   }
 };
 
@@ -30,8 +31,8 @@ const createPlaylist = async (title, dataDispatch) => {
     toast.success("Playlist created");
     dataDispatch({ type: "GET_PLAYLISTS", payload: playlists });
   } catch (error) {
-    toast.error("Try again");
-    console.log(error);
+    toast.error("Something went wrong, try again!");
+    throw new Error(error);
   }
 };
 
@@ -48,8 +49,8 @@ const addToPlaylist = async (playlistId, video, dataDispatch) => {
     toast.success(`Added to ${playlist.title}`);
     dataDispatch({ type: "UPDATE_PLAYLIST", payload: playlist });
   } catch (error) {
-    toast.error("Try again");
-    console.log(error);
+    toast.error("Something went wrong, try again!");
+    throw new Error(error);
   }
 };
 
@@ -64,8 +65,8 @@ const removeFromPlaylist = async (playlistId, videoId, dataDispatch) => {
     toast.success(`Removed from ${playlist.title}`);
     dataDispatch({ type: "UPDATE_PLAYLIST", payload: playlist });
   } catch (error) {
-    toast.error("Try again");
-    console.log(error);
+    toast.error("Something went wrong, try again!");
+    throw new Error(error);
   }
 };
 
@@ -80,11 +81,11 @@ const deletePlaylist = async (playlistId, dataDispatch, setIsLoading) => {
     });
     toast.success("Playlist deleted");
     dataDispatch({ type: "GET_PLAYLISTS", payload: playlists });
-    setIsLoading(false);
   } catch (error) {
-    toast.error("Try again");
+    toast.error("Something went wrong, try again!");
+    throw new Error(error);
+  } finally {
     setIsLoading(false);
-    console.log(error);
   }
 };
 
