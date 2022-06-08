@@ -7,3 +7,4 @@ export { SignupPage } from "./auth/SignupPage";
 export { AllPlaylists } from "./playlists/AllPlaylists";
 export { PlaylistPage } from "./playlists/PlaylistPage";
 export { LikesPage } from "./likes/LikesPage";
+export { HistoryPage } from "./history/HistoryPage";
