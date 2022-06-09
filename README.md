@@ -83,7 +83,7 @@ REACT_APP_JWT_SECRET = <JWT_SECRET_KEY_OF_YOUR_CHOICE>
 ```
 npm start
 ```
-
+ 
 ## Connect
 
 <a href="https://twitter.com/tanayj9"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"/></a>
