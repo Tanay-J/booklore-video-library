@@ -1,7 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import { AllPlaylists, LikesPage, PlaylistPage, Watchlater } from "pages";
+import {
+  AllPlaylists,
+  HistoryPage,
+  LikesPage,
+  PlaylistPage,
+  Watchlater,
+} from "pages";
 import { RequiresAuth } from "components/auth";
-import { HistoryPage } from "pages/history/HistoryPage";
 
 const PrivateRoutes = () => {
   return (

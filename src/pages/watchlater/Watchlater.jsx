@@ -1,6 +1,7 @@
 import { VideoCard } from "components/listing";
 import { Navbar, Sidebar } from "components/navigation";
 import { useData } from "contexts/data-context";
+import { Link } from "react-router-dom";
 import styles from "./watchlater.module.css";
 
 const Watchlater = () => {
@@ -15,9 +16,14 @@ const Watchlater = () => {
         <div>
           <p className=" mx-s text-s text-dark font-bold">Watch Later</p>
           {watchlater.length === 0 && (
-            <p className="text-m text-center text-gray my-xl">
-              Nothing in here
-            </p>
+            <div className="text-center">
+              <p className="text-m text-center text-gray my-xl">
+                Nothing in here
+              </p>
+              <Link to="/explore">
+                <button className="btn btn-primary">Explore</button>
+              </Link>
+            </div>
           )}
           <section className={`${styles.videolist_container} my-s`}>
             {watchlater.map((video) => (

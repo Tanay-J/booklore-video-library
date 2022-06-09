@@ -9,7 +9,7 @@ const RequiresAuth = ({ children }) => {
   return isAuthenticated ? (
     children
   ) : (
-    <Navigate to="/login" state={{ from: location }} />
+    <Navigate to="/login" state={{ from: location }} replace/>
   );
 };
 export { RequiresAuth };

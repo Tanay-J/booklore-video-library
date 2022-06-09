@@ -5,6 +5,7 @@ import { Sidebar } from "components/navigation";
 import { clearHistory } from "utils/service-requests/history-services";
 import { useData } from "contexts/data-context";
 import styles from "../explore/explore.module.css";
+import { Link } from "react-router-dom";
 
 const HistoryPage = () => {
   const {
@@ -27,7 +28,14 @@ const HistoryPage = () => {
               {isLoading ? <InlineLoader /> : "Clear"}
             </button>
           </div>
-
+          {!history.length && (
+            <div className="text-center">
+              <p className="text-m text-gray my-xl">Nothing in here</p>
+              <Link to="/explore">
+                <button className="btn btn-primary">Explore</button>
+              </Link>
+            </div>
+          )}
           <section className={`${styles.videolist_container}`}>
             {history.map((video) => (
               <HistoryVideoCard video={video} />
