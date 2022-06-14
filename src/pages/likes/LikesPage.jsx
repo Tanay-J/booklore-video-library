@@ -22,7 +22,7 @@ const LikesPage = () => {
             </Link>
           </div>
         )}
-        <section className={`${styles.video_container} my-s`}>
+        <section className={`${styles.videolist_container} my-s`}>
           {likes.map((video) => (
             <VideoCard video={video} />
           ))}
