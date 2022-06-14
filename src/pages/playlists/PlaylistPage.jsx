@@ -26,7 +26,7 @@ const PlaylistPage = () => {
             </Link>
           </div>
         )}
-        <section className={`${styles.video_container}`}>
+        <section className={`${styles.videolist_container}`}>
           {currentPlaylist.videos.map((video) => (
             <VideoCard video={video} />
           ))}
