@@ -84,17 +84,6 @@ const Login = () => {
                   )}
                 </div>
               </div>
-              <div className="flex flex-wrap justify-content-space-bet gap-2 my-xs">
-                <div>
-                  <input type="checkbox" />
-                  <small>Remember Me</small>
-                </div>
-                <div>
-                  <Link to="/login" className="link font-bold">
-                    <small>Forgot Password?</small>
-                  </Link>
-                </div>
-              </div>
               {errorMsg && (
                 <p className="text-danger text-center">{errorMsg}</p>
               )}
