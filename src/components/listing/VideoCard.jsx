@@ -108,6 +108,7 @@ const VideoCard = ({ video, isLoading }) => {
                 className={`${styles.thumbnail} br-s`}
                 src={video.thumbnail}
               />
+
               <BsFillPlayCircleFill
                 size="35px"
                 className={`${styles.play_btn}`}
@@ -121,7 +122,16 @@ const VideoCard = ({ video, isLoading }) => {
           />
 
           <div className={`${styles.video_details} mx-s`}>
-            <p className="text-dark font-bold">{video.title}</p>
+            <Link
+              to={`/video/${video._id}`}
+              state={{ currentVideo: video }}
+              onClick={() =>
+                isAuthenticated && addToHistory(video, dataDispatch)
+              }
+              className="link-none text-black"
+            >
+              <p className="text-dark font-bold">{video.title}</p>
+            </Link>
             <small className="text-gray">{video.creator}</small>
             <p className="text-gray text-xxs">{video.views} views</p>
             <p className="text-gray text-xxs">{formatDate()}</p>
