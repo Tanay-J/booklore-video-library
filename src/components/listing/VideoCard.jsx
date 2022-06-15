@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BsFillPlayCircleFill, BsThreeDotsVertical } from "react-icons/bs";
 import styles from "./listing.module.css";
@@ -15,6 +15,7 @@ import { useData } from "contexts/data-context";
 import { useAuth } from "contexts/auth-context";
 import { addToHistory } from "utils/service-requests/history-services";
 import { VideoLoader } from "components/loader";
+import { toast } from "react-toastify";
 
 const VideoCard = ({ video, isLoading }) => {
   const {
@@ -25,7 +26,24 @@ const VideoCard = ({ video, isLoading }) => {
     authState: { isAuthenticated },
   } = useAuth();
   const navigate = useNavigate();
-  const [showOptions, setShowOptions] = useState(false);
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "TOGGLE_MENU":
+        return { ...state, showMenu: !state.showMenu };
+      case "TOGGLE_PLAYLIST_OPTIONS":
+        return { ...state, playlistOptions: !state.playlistOptions };
+      case "SET_INPUT":
+        return { ...state, input: action.payload };
+      default:
+        break;
+    }
+  };
+  const [menuState, menuDispatch] = useReducer(reducer, {
+    showMenu: false,
+    playlistOptions: false,
+    input: "",
+  });
 
   const isInPlaylist = (playlist) => {
     return playlist.videos.some(
@@ -40,23 +58,36 @@ const VideoCard = ({ video, isLoading }) => {
     setShowOptions(false);
   };
 
-  const playlistCreator = (e) => {
-    if (e.key === "Enter") {
-      if (isAuthenticated) {
-        createPlaylist(e.target.value, dataDispatch);
-        e.target.value = "";
-      } else navigate("/login");
-    }
+  const playlistCreator = () => {
+    if (isAuthenticated) {
+      if (menuState.input) {
+        createPlaylist(menuState.input, dataDispatch);
+        menuDispatch({ type: "SET_INPUT", payload: "" });
+      } else toast.error("Playlist name can't be empty");
+    } else navigate("/login");
   };
 
   const formatDate = () => {
     const videoDate = new Date(Date.parse(video.createdOn));
-    const months = ['Jan', 'Feb', 'Mar', 'Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
     const date = videoDate.getDate();
     const month = months[videoDate.getMonth()];
     const year = videoDate.getFullYear();
 
-    return `${date} ${month} ${year}`
+    return `${date} ${month} ${year}`;
   };
   return (
     <div>
@@ -93,17 +124,15 @@ const VideoCard = ({ video, isLoading }) => {
             <p className="text-dark font-bold">{video.title}</p>
             <small className="text-gray">{video.creator}</small>
             <p className="text-gray text-xxs">{video.views} views</p>
-            <p className="text-gray text-xxs">
-              {formatDate()}
-            </p>
+            <p className="text-gray text-xxs">{formatDate()}</p>
           </div>
 
           <div>
             <BsThreeDotsVertical
               className={`${styles.options_btn} pointer text-dark`}
-              onClick={() => setShowOptions(!showOptions)}
+              onClick={() => menuDispatch({ type: "TOGGLE_MENU" })}
             />
-            {showOptions && (
+            {menuState.showMenu && (
               <ul className={`${styles.options} br-s`}>
                 {!watchlater.find((item) => item._id === video._id) ? (
                   <li
@@ -128,33 +157,57 @@ const VideoCard = ({ video, isLoading }) => {
                 )}
 
                 <li className=" px-xs my-xs pointer">
-                  <small>Add to Playlist</small>
-                  <ul>
-                    {playlists.map((list) => (
-                      <li>
-                        <small>
-                          <label htmlFor={list.title}>
-                            <input
-                              type="checkbox"
-                              checked={isInPlaylist(list)}
-                              id={list.title}
-                              value={list.title}
-                              onChange={(e) => playlistOpsHandler(e, list._id)}
-                            />
-                            {list.title}
-                          </label>
-                        </small>
+                  <small
+                    onClick={() =>
+                      menuDispatch({ type: "TOGGLE_PLAYLIST_OPTIONS" })
+                    }
+                  >
+                    Add to Playlist
+                  </small>
+                  {menuState.playlistOptions && (
+                    <ul>
+                      {playlists.map((list) => (
+                        <li>
+                          <small>
+                            <label htmlFor={list.title}>
+                              <input
+                                type="checkbox"
+                                checked={isInPlaylist(list)}
+                                id={list.title}
+                                value={list.title}
+                                onChange={(e) =>
+                                  playlistOpsHandler(e, list._id)
+                                }
+                              />
+                              {list.title}
+                            </label>
+                          </small>
+                        </li>
+                      ))}
+                      <li className="my-xs">
+                        <input
+                          id="createPlaylist"
+                          className="input border-transparent br-s"
+                          type="text"
+                          value={menuState.input}
+                          placeholder="Playlist Name"
+                          onChange={(e) =>
+                            menuDispatch({
+                              type: "SET_INPUT",
+                              payload: e.target.value,
+                            })
+                          }
+                        />
+                        <button
+                          className={`${styles.create_btn} my-xs px-xs br-s`}
+                          htmlFor="createPlaylist"
+                          onClick={playlistCreator}
+                        >
+                          Create Playlist
+                        </button>
                       </li>
-                    ))}
-                    <li className="my-xs">
-                      <input
-                        className="input bg-transparent border-transparent text-white"
-                        type="text"
-                        placeholder="Create Playlist"
-                        onKeyDown={playlistCreator}
-                      />
-                    </li>
-                  </ul>
+                    </ul>
+                  )}
                 </li>
               </ul>
             )}
