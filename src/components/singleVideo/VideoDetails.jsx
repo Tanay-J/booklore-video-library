@@ -104,7 +104,7 @@ const VideoDetails = ({ video }) => {
           </div>
         )}
 
-        <div className="pos-rel pointer">
+        <div className="pos-rel">
           <div
             className="flex align-items-center"
             onClick={() => setShowPlaylists(!showPlaylists)}
@@ -144,7 +144,7 @@ const VideoDetails = ({ video }) => {
                   onChange={(e) => setInput(e.target.value)}
                 />
                 <button
-                  className={`${styles.create_btn} my-xs px-xs br-s`}
+                  className={`${styles.create_btn} pointer my-xs px-xs br-s`}
                   htmlFor="createPlaylist"
                   onClick={handleCreatePlaylist}
                 >
