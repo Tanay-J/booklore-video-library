@@ -6,6 +6,16 @@ const CategoryChips = ({ setCategory }) => {
   const { categories } = getCategories();
   const [isActive, setIsActive] = useState("");
 
+  const chipClickHandler = (categoryName) => {
+    if (isActive !== categoryName) {
+      setCategory(categoryName);
+      setIsActive(categoryName);
+    } else {
+      setCategory("");
+      setIsActive("");
+    }
+  };
+
   return (
     <div className="mx-xs my-s">
       <button
@@ -22,12 +32,9 @@ const CategoryChips = ({ setCategory }) => {
       {categories.map((cat) => (
         <button
           className={`${styles.chips} ${
-            isActive === cat && "bg-primary text-light"
+            isActive === cat.categoryName && "bg-primary text-light"
           }  btn btn-outline outline-primary mx-xs`}
-          onClick={() => {
-            setCategory(cat.categoryName);
-            setIsActive(cat);
-          }}
+          onClick={() => chipClickHandler(cat.categoryName)}
           key={cat._id}
         >
           {cat.categoryName}

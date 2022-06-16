@@ -58,6 +58,13 @@ ul {
   padding: 4px;
   z-index: 1;
 }
+.create_btn {
+  display: block;
+  background-color: var(--primary-light);
+  width: fit-content;
+  color: var(--text-white);
+  border: none;
+}
 .chips {
   border-radius: 3rem;
 }

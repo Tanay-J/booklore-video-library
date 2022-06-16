@@ -26,6 +26,13 @@
   background-color: rgba(66, 65, 65, 0.9);
   color: var(--text-white);
   list-style-type: none;
-  padding: 4px;
+  padding: 4px 12px;
   z-index: 1;
+}
+.create_btn {
+  display: block;
+  background-color: var(--primary-light);
+  width: fit-content;
+  color: var(--text-white);
+  border: none;
 }

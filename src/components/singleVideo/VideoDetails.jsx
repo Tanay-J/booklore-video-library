@@ -23,6 +23,7 @@ import {
   removeFromLikes,
 } from "utils/service-requests/likes-services";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const VideoDetails = ({ video }) => {
   const {
@@ -32,7 +33,9 @@ const VideoDetails = ({ video }) => {
     dataState: { watchlater, playlists, likes },
     dataDispatch,
   } = useData();
+  const navigate = useNavigate();
   const [showPlaylists, setShowPlaylists] = useState(false);
+  const [input, setInput] = useState("");
 
   const isInPlaylist = (playlist) => {
     return playlist.videos.some(
@@ -50,13 +53,13 @@ const VideoDetails = ({ video }) => {
     return likes.some((likedVideo) => likedVideo._id === video._id);
   };
 
-  const handleCreatePlaylist = (e) => {
-    if (e.key === "Enter") {
-      if (isAuthenticated) {
-        createPlaylist(e.target.value, dataDispatch);
-        e.target.value = "";
-      } else toast.error("Please Login first");
-    }
+  const handleCreatePlaylist = () => {
+    if (isAuthenticated) {
+      if (input) {
+        createPlaylist(input, dataDispatch);
+        setInput("");
+      } else toast.error("Playlist name can't be empty");
+    } else navigate("/login");
   };
   return (
     <div>
@@ -101,7 +104,7 @@ const VideoDetails = ({ video }) => {
           </div>
         )}
 
-        <div className="pos-rel pointer">
+        <div className="pos-rel">
           <div
             className="flex align-items-center"
             onClick={() => setShowPlaylists(!showPlaylists)}
@@ -111,6 +114,11 @@ const VideoDetails = ({ video }) => {
           {showPlaylists && (
             <ul className={`${styles.options}`}>
               <small>Playlists</small>
+              {!playlists.length && (
+                <li>
+                  <small className="text-gray">No Playlists to show</small>
+                </li>
+              )}
               {playlists.map((list) => (
                 <li>
                   <small>
@@ -129,11 +137,19 @@ const VideoDetails = ({ video }) => {
               ))}
               <li className="my-xs">
                 <input
-                  className="input bg-transparent border-transparent text-dark"
+                  className="input border-transparent br-s"
+                  value={input}
                   type="text"
-                  placeholder="Create Playlist"
-                  onKeyDown={handleCreatePlaylist}
+                  placeholder="Playlist Name"
+                  onChange={(e) => setInput(e.target.value)}
                 />
+                <button
+                  className={`${styles.create_btn} pointer my-xs px-xs br-s`}
+                  htmlFor="createPlaylist"
+                  onClick={handleCreatePlaylist}
+                >
+                  Create Playlist
+                </button>
               </li>
             </ul>
           )}

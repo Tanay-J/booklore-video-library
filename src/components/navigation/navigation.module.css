@@ -39,7 +39,7 @@
   margin: 0;
   padding: 0;
   position: sticky;
-  top: 15%;
+  top: 10%;
 }
 .list_items:hover {
   background-color: var(--gray-light);
