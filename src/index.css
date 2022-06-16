@@ -4,6 +4,24 @@ body {
   background-color: var(--background);
   transition: 0.2s;
 }
+
+input[type="radio"] {
+  appearance: none;
+  margin: 0 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+input[type="radio"]:checked {
+  background-color: var(--gray-darker);
+}
+input {
+  accent-color: var(--primary-light);
+}
+
 body::-webkit-scrollbar {
   width: 8px;
 }
