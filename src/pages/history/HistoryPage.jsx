@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { HistoryVideoCard } from "components/history";
 import { InlineLoader } from "components/loader";
-import { Sidebar } from "components/navigation";
+import { MobileSidebar, Sidebar } from "components/navigation";
 import { clearHistory } from "utils/service-requests/history-services";
 import { useData } from "contexts/data-context";
 import styles from "../explore/explore.module.css";
@@ -18,8 +18,9 @@ const HistoryPage = () => {
     <>
       <main className={`main-container m-s`}>
         <Sidebar />
+        <MobileSidebar />
         <div>
-          <div className="flex justify-content-space-bet">
+          <div className="flex justify-content-space-bet my-xs">
             <p className="mx-s text-s text-dark font-bold">History</p>
             <button
               className="btn btn-round btn-outline outline-secondary mx-m"

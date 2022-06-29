@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { VideoCard } from "components/listing";
-import { Sidebar } from "components/navigation";
+import { MobileSidebar, Sidebar } from "components/navigation";
 import { useData } from "../../contexts/data-context";
 import styles from "./playlists.module.css";
 
@@ -14,6 +14,7 @@ const PlaylistPage = () => {
   return (
     <main className={`main-container m-s`}>
       <Sidebar />
+      <MobileSidebar />
       <div>
         <p className="mx-s text-s text-dark font-bold">
           {currentPlaylist.title}

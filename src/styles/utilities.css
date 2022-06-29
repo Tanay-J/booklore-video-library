@@ -163,3 +163,10 @@ ul {
 .border-transparent {
   border: 1px solid transparent;
 }
+
+@media (max-width: 640px) {
+  .main-container {
+    grid-template-columns: 100%;
+    margin: auto;
+  }
+}

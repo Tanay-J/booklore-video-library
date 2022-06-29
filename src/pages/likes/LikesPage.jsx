@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { VideoCard } from "components/listing";
-import { Sidebar } from "components/navigation";
+import { MobileSidebar, Sidebar } from "components/navigation";
 import { useData } from "contexts/data-context";
 import styles from "../explore/explore.module.css";
 
@@ -12,8 +12,9 @@ const LikesPage = () => {
   return (
     <main className={`main-container m-s`}>
       <Sidebar />
+      <MobileSidebar />
       <div>
-        <p className="mx-s text-s text-dark font-bold">Liked Videos</p>
+        <p className="my-xs mx-s text-s text-dark font-bold">Liked Videos</p>
         {!likes.length && (
           <div className="text-center">
             <p className="text-m text-gray my-xl">Nothing in here</p>

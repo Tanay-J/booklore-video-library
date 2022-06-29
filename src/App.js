@@ -1,12 +1,13 @@
 import "react-toastify/dist/ReactToastify.css";
 import { PrivateRoutes, PublicRoutes } from "utils/routes";
-import { Navbar } from "components/navigation";
+import { MobileNavbar, Navbar } from "components/navigation";
 import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div>
       <Navbar />
+      <MobileNavbar />
       <ToastContainer
         position="bottom-right"
         autoClose={3000}

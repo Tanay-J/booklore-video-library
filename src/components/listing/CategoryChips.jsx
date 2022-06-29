@@ -17,7 +17,7 @@ const CategoryChips = ({ setCategory }) => {
   };
 
   return (
-    <div className="mx-xs my-s">
+    <div className={`${styles.chips_wrapper} mx-xs my-s`}>
       <button
         className={`${styles.chips} ${
           !isActive && "bg-primary text-light"
