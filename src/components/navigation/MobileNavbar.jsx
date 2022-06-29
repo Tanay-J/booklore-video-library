@@ -21,13 +21,15 @@ const MobileNavbar = () => {
     setAuthState({ isAuthenticated: false, userData: "", token: "" });
     dataDispatch({ type: "CLEAR_ALL" });
   };
-
   useEffect(() => {
     setShowMenu(false);
+  }, [location]);
+  
+  useEffect(() => {
     darkMode
       ? document.body.classList.add("dark-mode")
       : document.body.classList.remove("dark-mode");
-  }, [location, darkMode]);
+  }, [darkMode]);
 
   return (
     <header
