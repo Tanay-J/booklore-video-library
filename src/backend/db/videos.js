@@ -19,7 +19,7 @@ export const videos = [
     _id: "lCrMAtbBUJA",
     title: "15 Books To Read In 2022",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      "In this video, I talk through 15 of my favourite books that I read in 2021. If you're looking for some recommendations for the New Year, I'd 100% recommend everything on this list. Enjoy!",
     category: "Your Next Read",
     creator: "Ali Abdaal",
     creatorAvatar:
@@ -33,7 +33,7 @@ export const videos = [
     _id: "6Gw5dK48MtI",
     title: "Why books are here to stay",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      " Despite the rise of e-books, physical books aren’t going anywhere. Graphic designer Chip Kidd shares why their design is so lasting. Small Thing Big Idea, a TED original series, celebrates the lasting genius of everyday objects so perfectly designed that they changed the world around them.",
     category: "Talks",
     creator: "TED",
     creatorAvatar:
@@ -89,7 +89,7 @@ export const videos = [
     _id: "M0qL4zzIuC8",
     title: "12 great books that will get you out of a reading slump ",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      "Here are 12 great book recommendations that will get you out of a reading slump",
     category: "Your Next Read",
     creator: " A Clockwork Reader",
     creatorAvatar:
@@ -143,7 +143,7 @@ export const videos = [
     _id: "DpyMvwF4OSE",
     title: "Psychology of Money Book Review",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      "One of my favourite books on money is “Psychology of Money”, because it teaches us so many important life lessons on life, and on money. Here are my top 9 lessons from the book, for you to think deeply about, as you have your relationship with money.",
     category: "Reviews",
     creator: "warikoo",
     creatorAvatar:
@@ -168,4 +168,3 @@ export const videos = [
     url: getURL("MA3uwVMuqAc"),
   },
 ];
-
