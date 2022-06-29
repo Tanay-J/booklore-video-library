@@ -128,7 +128,7 @@ const VideoCard = ({ video, isLoading }) => {
               onClick={() =>
                 isAuthenticated && addToHistory(video, dataDispatch)
               }
-              className="link-none text-black"
+              className="link link-none text-black"
             >
               <p className="text-dark font-bold">{video.title}</p>
             </Link>
