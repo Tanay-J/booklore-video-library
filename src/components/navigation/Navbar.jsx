@@ -58,7 +58,7 @@ const Navbar = () => {
               </Link>
             </li>
           )}
-          <li className="mx-s">
+          <li className="pointer mx-s">
             {!darkMode ? (
               <BsMoonFill
                 className={`${styles.icon}`}

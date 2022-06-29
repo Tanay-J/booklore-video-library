@@ -24,7 +24,7 @@ const MobileNavbar = () => {
   useEffect(() => {
     setShowMenu(false);
   }, [location]);
-  
+
   useEffect(() => {
     darkMode
       ? document.body.classList.add("dark-mode")
@@ -70,7 +70,7 @@ const MobileNavbar = () => {
                 </Link>
               </li>
             )}
-            <li className="mx-s">
+            <li className="mx-s pointer">
               {!darkMode ? (
                 <BsMoonFill
                   className={`${styles.icon}`}
